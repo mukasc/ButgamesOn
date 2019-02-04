@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:p="http://primefaces.prime.com.tr/ui"
+     xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+     xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <h:head>
+        <link href="../css/style3.css" rel="stylesheet" type="text/css" media="screen" />
+        <script language="JavaScript" src="../javascript/script.js"></script>
+        <title>Cadastro Cliente</title>
+
+    </h:head>
+
+    <h:body>
+        <div id="divPrincipal">
+            <div id="divCentral">
+                <div id="divCabecalho">
+                    <div id="divDestaque">
+                       
+                    </div>
+                </div>
+                <div id="divMenuSuperior">
+                    <ul>
+                        <li><h:link target="#">Corrida</h:link></li>
+                        <li><a href="#">Tiro</a></li>
+                        <li><a href="#">Esportes</a></li>
+                        <li><a href="#">RPG</a></li>
+                        <li><a href="#">Puzzle</a></li>
+                        <li><a href="#">Estratégia</a></li>
+                    </ul>
+                </div>
+                <div id="divFaixa">
+                Home > Cadastro > Cliente
+                </div>
+                <div id="divConteudo">
+                    <div id="divMenuLateral">
+                        <ul>
+                            <li><a href="#">Cliente</a></li>
+                            <li><a href="#">Produto</a></li>
+                            <li><a href="#">Ofertas</a></li>
+                            
+                            
+                        </ul>
+                    </div>
+                    <div id="divConteudoReal">
+
+                        
+                        <p:tabView>
+                            <c:forEach var="cont" items="#{produtoBean.produtos}">
+                             <p:tab title="#{cont.nome}">
+                                 <h:panelGrid columns="2" cellpadding="10">
+                                     <p:graphicImage width="200px" height="200px" value="#{cont.imagem}" />
+                                     <h:outputText
+                                         value="#{cont.descricao}" />
+                                 </h:panelGrid>
+                             </p:tab>
+                            </c:forEach>
+                         </p:tabView>
+
+                                          
+                    </div>
+                </div>
+                <div id="divRodape">
+                    Desenvolvido por Safety House.
+                </div>
+            </div>
+        </div>
+    </h:body>
+</html>
+

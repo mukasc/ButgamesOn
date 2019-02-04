@@ -1,0 +1,173 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:p="http://primefaces.prime.com.tr/ui"
+     xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+     xmlns:c="http://java.sun.com/jsp/jstl/core"
+     xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <link href="../css/style3.css" rel="stylesheet" type="text/css" media="screen" />
+        <script language="JavaScript" src="../javascript/script.js"></script>
+        <title>Cadastro</title>
+
+    </h:head>
+
+    <h:body>
+        <div id="divPrincipal">
+            <div id="divCentral">
+                <div id="divCabecalho">
+                    <div id="divDestaque">
+                       
+                    </div>
+                </div>
+                <div id="divMenuSuperior">
+                    <ul>
+                        <li><h:link target="#">Corrida</h:link></li>
+                        <li><a href="#">Tiro</a></li>
+                        <li><a href="#">Esportes</a></li>
+                        <li><a href="#">RPG</a></li>
+                        <li><a href="#">Puzzle</a></li>
+                        <li><a href="#">Estratégia</a></li>
+                    </ul>
+                </div>
+                <div id="divFaixa">
+                Home > Cadastro > Cliente
+                </div>
+                <div id="divConteudo">
+                    <div id="divMenuLateral">
+                        <ul>
+                            <li><a href="#">Ofertas</a></li>                           
+                            
+                        </ul>
+                    </div>
+                    <div id="divConteudoReal">
+
+                        <h:form>
+                            <p:wizard widgetVar="wiz" flowListener="#{compradorBean.onFlowProcess}">
+                                <p:tab id="basicos" title="Dados Básicos">
+                                       <p:panel header="Dados Básicos">
+                                           <h:messages errorClass="error"/>
+                                              <h:panelGrid columns="3" styleClass="grid" columnClasses="label, value">
+                                                <h:outputText value="Nome:"/>
+                                                <p:inputText id="nome"
+                                                             value="#{compradorBean.comprador.nome}"
+                                                             required="true"
+                                                             requiredMessage="Campo Obrigatório"
+                                                             size="20"
+                                                             />
+                                                <h:message for="nome"/>
+
+                                                <h:outputText value="Email:"/>
+                                                <p:inputText id="email"
+                                                             value="#{compradorBean.comprador.email}"
+                                                             required="true"
+                                                             requiredMessage="Campo Obrigatório"
+                                                             size="20"
+                                                             />
+                                                <h:message for="email"/>
+
+                                                <h:outputText value="Senha:"/>
+                                                <p:password id="senha"
+                                                            feedback="true"
+                                                            minLength="6"
+                                                            value="#{compradorBean.comprador.senha}"
+                                                            maxlength="8"
+                                                            size="8"
+                                                            required="true"
+                                                            requiredMessage="Campo Obrigatório"
+                                                             />
+                                                <h:message for="senha"/>
+                                              </h:panelGrid>
+                                            </p:panel>
+                               </p:tab>
+                                <p:tab title="Endereço" id="endereco">
+                                    <p:panel header="Endereço">
+                                         
+                                    <h:panelGrid columns="2">
+                                        <h:outputText value="CEP:"/>
+                                        <p:inputMask    value="#{compradorBean.comprador.cep}"   maxlength="8" mask="99999-999"  />
+                                        <h:outputText value="UF"/>
+                                        <h:selectOneMenu value="#{compradorBean.comprador.uf}" id="UF">
+                                                 <f:selectItems value="#{compradorBean.estados}" var="estados" itemValue="#{estados}" itemLabel="#{estados}">
+                                                 </f:selectItems>
+                                        </h:selectOneMenu>
+
+                                        <h:outputText value="Cidade"/>
+                                         <p:inputText id="cidade"
+                                                     value="#{compradorBean.comprador.cidade}"
+                                                     maxlength="25"
+                                                     size="12"
+                                                     />
+
+                                         <h:outputText value="Bairro"/>
+                                         <p:inputText id="bairro"
+                                                     value="#{compradorBean.comprador.bairro}"
+                                                     maxlength="25"
+                                                     size="12"
+                                                     />
+                                         
+                                         <h:outputText value="Número" />
+                                         <p:inputText id="numero"
+                                                     value="#{compradorBean.comprador.numero}"
+                                                     maxlength="5"
+                                                     size="5"
+                                                     validator="#{compradorBean.validarNumero}"
+                                                     />                                                                               
+
+                                        </h:panelGrid>
+                                   
+                                   </p:panel>
+                                 </p:tab >
+                                 <p:tab title="Dados para compra" id="cartao">
+                                    <p:panel header="Dados para Compra">
+                                 
+                                        <h:panelGrid columns="2">
+                                          <h:outputText value="CPF:"/>
+                                          <p:inputMask  value="#{compradorBean.comprador.cpf}"   maxlength="14" mask="999.999.999-99"  />
+
+                                          <h:outputText value="Número do Cartão:"/>
+                                          <p:inputMask  value="#{compradorBean.comprador.cartao}"   maxlength="19" mask="9999-9999-9999-9999"  />
+
+                                          <h:outputText value="Data Vencimento:"/>
+                                          <p:inputMask  value="#{compradorBean.comprador.data_vencimento_cartao}"   maxlength="14" mask="99-99"/>
+                                          <f:convertDateTime pattern="yyyy.MM.dd"/>
+                                          <h:outputText value="Nome no cartão:"/>
+                                          <p:inputText value="#{compradorBean.comprador.nome_cartao}"
+                                                     maxlength="25"
+                                                     size="15"
+                                                     
+                                                     />
+                                        </h:panelGrid>
+                                   <p:commandButton value="Submit" update="growl" actionListener="#{compradorBean.Salvar}" ajax="false" />
+                                   </p:panel>
+                                 </p:tab >
+
+
+
+
+
+                                </p:wizard>
+                                <p:ajaxStatus>
+                                    <f:facet name="start">
+                                            <h:graphicImage value="../imagens/site/ajaxloading.gif" />
+                                    </f:facet>
+
+                                    <f:facet name="complete">
+                                            <h:outputText value="" />
+                                    </f:facet>
+                                </p:ajaxStatus>
+                        </h:form>
+                           
+                                          
+                    </div>
+                </div>
+                <div id="divRodape">
+                    Desenvolvido por Safety House.
+                </div>
+            </div>
+        </div>
+    </h:body>
+</html>
+

@@ -1,0 +1,103 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:p="http://primefaces.prime.com.tr/ui"
+     xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+     xmlns:c="http://java.sun.com/jsp/jstl/core"
+     xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <link href="../css/style3.css" rel="stylesheet" type="text/css" media="screen" />
+        <script language="JavaScript" src="../javascript/script.js"></script>
+        <title>Cadastro Cliente</title>
+
+    </h:head>
+
+    <h:body>
+        <div id="divPrincipal">
+            <div id="divCentral">
+                <div id="divCabecalho">
+                    <div id="divDestaque">
+                       
+                    </div>
+                </div>
+                <div id="divMenuSuperior">
+                    <ul>
+                        <li><h:link target="#">Corrida</h:link></li>
+                        <li><a href="#">Tiro</a></li>
+                        <li><a href="#">Esportes</a></li>
+                        <li><a href="#">RPG</a></li>
+                        <li><a href="#">Puzzle</a></li>
+                        <li><a href="#">Estratégia</a></li>
+                    </ul>
+                </div>
+                <div id="divFaixa">
+                Home > Cadastro > Cliente
+                </div>
+                <div id="divConteudo">
+                    <div id="divMenuLateral">
+                        <ul>
+                            <li><a href="#">Cliente</a></li>
+                            <li><a href="#">Produto</a></li>
+                            <li><a href="#">Ofertas</a></li>
+                            
+                            
+                        </ul>
+                    </div>
+                    <div id="divConteudoReal">
+
+                   <h:form>
+                  
+
+    <p:growl id="growl" showDetail="true" />
+
+	<h3>Input Text Slider</h3>
+	<h:panelGrid columns="1" style="margin-bottom:10px">
+		<p:inputText id="txt1" value="#{sliderBean.number1}" />
+		<p:slider for="txt1"/>
+	</h:panelGrid>
+
+	
+
+	<h:panelGrid columns="2">
+		<p:commandButton value="Submit" update="display" oncomplete="dialog.show() " />
+
+		<p:ajaxStatus style="width:16px;height:16px;">
+			<f:facet name="start">
+				<h:graphicImage value="../design/ajaxloading.gif" />
+			</f:facet>
+
+			<f:facet name="complete">
+				<h:outputText value="" />
+			</f:facet>
+		</p:ajaxStatus>
+	</h:panelGrid>
+
+
+	<p:dialog header="Alterado" widgetVar="dialog"
+		showEffect="bounce" hideEffect="fade" width="200">
+
+		<h:panelGrid id="display" columns="1" cellpadding="5">
+			<h:outputText value="Number 1: #{sliderBean.number1}" />
+
+			
+		</h:panelGrid>
+
+	</p:dialog>
+
+</h:form>
+					
+
+                           
+                                          
+                    </div>
+                </div>
+                <div id="divRodape">
+                    Desenvolvido por Safety House.
+                </div>
+            </div>
+        </div>
+    </h:body>
+</html>
+

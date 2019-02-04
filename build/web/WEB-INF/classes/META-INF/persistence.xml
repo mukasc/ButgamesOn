@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+  <persistence-unit name="ButgamesOnPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <non-jta-data-source>dsButgameson</non-jta-data-source>
+    <class>modelo.Produto</class>
+    <class>modelo.Categoria</class>
+    <class>modelo.Imagem</class>
+    <class>modelo.Compra</class>
+    <class>modelo.CompraPedido</class>
+    <class>modelo.Interessados</class>
+    <class>modelo.Oferta</class>
+    <class>modelo.Pessoa</class>
+    <class>modelo.PessoaFisica</class>
+    <class>modelo.PessoaJuridica</class>
+    <exclude-unlisted-classes>true</exclude-unlisted-classes>
+    <properties>
+      <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
+      <property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.JBossTransactionManagerLookup"/>
+      <property name="hibernate.show_sql" value="true"/>
+      <property name="hibernate.format_sql" value="true"/>
+    </properties>
+  </persistence-unit>
+</persistence>
